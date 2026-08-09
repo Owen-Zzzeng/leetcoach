@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "leetcode-coach"
+version = "0.1.0"
+description = "An AI coach that decides exactly what LeetCode problem you should practice each day."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.40",
+    "flask>=3.0",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.1",
+]
+
+[project.scripts]
+leetcode-coach = "coach.cli:main"
+leetcode-coach-web = "coach.webapp:main"
+
+[tool.setuptools]
+packages = ["coach"]
+
+[tool.setuptools.package-data]
+coach = ["data/*.json"]

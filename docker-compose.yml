@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    container_name: leetcode-coach-db
+    environment:
+      POSTGRES_USER: coach
+      POSTGRES_PASSWORD: coach
+      POSTGRES_DB: leetcode_coach
+    ports:
+      # Host port 5433, not 5432 — leaves room for a system-wide Postgres
+      # install on the default port.
+      - "5433:5432"
+    volumes:
+      - leetcode-coach-db-data:/var/lib/postgresql/data
+
+volumes:
+  leetcode-coach-db-data:
